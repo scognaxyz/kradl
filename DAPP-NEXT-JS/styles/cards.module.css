@@ -1,0 +1,16 @@
+.header {  
+    margin-left: '13px'; 
+    margin-right: '13px';
+    margin-top:'10px'; 
+    font-weight: 'bold'; 
+    font-size: '19px';
+}
+
+.meta { 
+    margin-left: '13px'; 
+    margin-right: '13px'; 
+    font-size: '13px'; 
+    font-weight: 'normal';
+    color: 'grey'; 
+    margin-top: '8px';
+}

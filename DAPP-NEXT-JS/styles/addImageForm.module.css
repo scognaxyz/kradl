@@ -1,0 +1,99 @@
+.meta {
+    color: rgb(104, 104, 104);
+    font-size: calc(0.28rem + 0.7vw);
+    margin-top: 0.1vw;
+    margin-bottom: 1vw;
+    /* margin-left: 25%;
+    margin-right: 25%; */
+  }
+  
+  .title {
+    font-size: calc(0.6rem + 0.8vw);
+    margin-top: calc(3px + 1vw);
+    margin-bottom: calc(1px + 0.6vw);
+    /* margin-left: 25%;
+    margin-right: 25%;  */
+  }
+  
+  .image {
+    padding-right: 10%;
+    padding-left: 10%;
+    border:calc(2px + 0.15vw) dashed grey;
+    border-radius:11% 30%;
+    width: calc(150px + 1vw);
+    height: calc(230px + 1vw);
+    margin: auto;
+    width: 75%;
+  }
+  
+  .label2 {
+    padding-right:3%;
+   
+  }
+  
+  .inputImage {
+    display: none;
+  }
+  
+  .fileAdmitted {
+    padding-left: 55%;
+    color: grey;
+    font-size: calc(0.08rem + 0.8vw);
+    margin-top: 0.1vw;
+  }
+  
+  .button {
+    background-color: rgb(104, 104, 104);
+    border-radius:10% 10%;
+    font-size: calc(0.6rem + 0.9vw);
+    float: bottom;
+    width: 100%;
+    margin-top: calc(2px + 2.4vw)
+  }
+  
+  
+  .maindiv{
+    width:100%;
+    display: flex;
+  }
+  
+  .maindiv2{
+    width:100%;
+    display: flex;
+  }
+  
+  .subdiv {
+    width:50%;
+    margin-top:calc(3px + 1vw);
+  }
+  
+  .subdiv1 {
+    width:45%;
+    padding-left: 14.5%;
+    padding-right: 2%;
+  }
+  
+  .subdiv2 {
+    width:55%;
+    padding-right:14%;
+    padding-left:2%;
+  }
+  
+  .input1{
+    width:100%;
+    background-color: white;
+    font-size: calc(1px + 1vw);
+    border: calc(1px + 0.03vw) solid grey;
+    border-radius: 3px;
+    height: calc(27px + 1vw);
+  }
+  
+  .input2{
+    width:90%;
+    background-color: white;
+    font-size: calc(1px + 1vw);
+    border: calc(1px + 0.03vw) solid grey;
+    border-radius: 3px;
+    height: calc(11px + 1vw);
+  }
+  
