@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import factoryContest from '../ethereum/factoryContest';
 import web3 from '../ethereum/web3';
 import styles from '../styles/contestForm.module.css';
+import contest from '../ethereum/contest';
 
 export default function contestForm()  {
 
@@ -16,56 +17,75 @@ export default function contestForm()  {
     const [projectTokenAddress, setProjectTokenAddress] = useState('');
     const [minimumTokenHolders, setMinimumTokenHolders] = useState('');
     const [description, setDescription] = useState('');
-    const [immagine, setImmagine] = useState(null);
+    const [errorrMessage, setErrorMessage] = useState('');
+    const [pic, setPic] = useState(null);
 
    const handleFile = async (e) => {
 
         let file = e.target.files[0]
-        setImmagine(file);
+        setPic(file);
     }
 
 
    async function onSubmit(event) {
         event.preventDefault();
 
-        console.log(contestPrize)
+        let callOK = true
+        let call2OK = true
 
-         const photo = new FormData();
-         photo.append("file", immagine, immagine.name);
+         const data = new FormData();
+         data.append("pic",pic, pic.filename);
+         data.append("header",projectName,);
+         data.append("rules",contestPrize );
+         data.append("description",description );
+         data.append("address",projectTokenAddress);
 
 
-        // console.log(immagine)
-        // console.log(photo)
 
-        
-        // const accounts = await web3.eth.getAccounts()
-        // await factoryContest.methods
-        // .deploy(contestTime,projectTokenAddress,contestPrize,minimumTokenHolders,projectName,ticker)
-        // .send({
-        //     from: accounts[0],
-        //     value: contestPrize
-        // });
-        
-        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/projects/`, {
-            method: 'POST',
-            body: ( JSON.stringify({
-                header: projectName,
-                rules: contestPrize,
-                description: description,
-                address: projectTokenAddress,
-            }),photo),
-             headers: {
-               'Content-Type': 'application/json',
-              
+
+        try {
+            const accounts = await web3.eth.getAccounts()
+            await factoryContest.methods
+                .deploy(contestTime,projectTokenAddress,contestPrize,minimumTokenHolders,projectName,ticker)
+                .send({
+                    from: accounts[0],
+                    value: contestPrize
+         });
+
+        } catch (err) {
+            callOK = false
+            setErrorMessage( err.message );
+        }
+
+        if(callOK) {
+            try {
+                const contests = await factoryContest.methods.getDeployedContests().call();
+                const nftFactories = await factoryContest.methods.getDeployedContestsNFT().call();
+                data.append("address_contest",contests[contests.length -1]);
+                data.append("address_factory",nftFactories[nftFactories.length -1]); 
+
+            } catch(err) {
+                call2OK = false
+                setErrorMessage( err.message );
             }
-            
-          })
-          console.log(res.photo)
-          if (res.ok) {
-            const json = await res.json();
-            const copy = [...projects, json]
-            setProjects(copy)
-          }
+
+            if(call2OK) {
+                try {
+                    await fetch(process.env.NEXT_PUBLIC_API_URL + `/projects/`, {
+                    method: 'POST',
+                    body: data,
+                    })
+                } catch (err){
+                    setErrorMessage( err.message );
+                }
+            }
+        }
+
+        //   if (res.ok) {
+        //     const json = await res.json();
+        //     const copy = [...projects, json]
+        //     setProjects(copy)
+        //   }
 
     }
 

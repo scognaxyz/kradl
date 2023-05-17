@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@openzeppelin/contracts": "^4.8.1",
     "@truffle/hdwallet-provider": "^2.1.2",
+    "axios": "^0.24.0",
     "fs-extra": "^11.1.0",
     "ganache-cli": "^6.12.2",
     "mocha": "^10.1.0",

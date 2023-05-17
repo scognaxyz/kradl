@@ -1858,7 +1858,7 @@ contract Contest {
     uint public tempo;
     uint public deployDate;
     IERC20 public project;
-    uint minimumToken;
+    uint public minimumToken;
     mapping ( address => bool) public holders;
     mapping ( address => bool) public voters;
     mapping ( address => bool) public partecipants;

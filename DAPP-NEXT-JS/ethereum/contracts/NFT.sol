@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./ERC721.sol";
-import "./Counters.sol";
-import "./Ownable.sol";
-import "./ERC721URIStorage.sol";
+import "DAPP-NEXT-JS/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "DAPP-NEXT-JS/node_modules/@openzeppelin/contracts/utils/Counters.sol";
+import "DAPP-NEXT-JS/node_modules/@openzeppelin/contracts/access/Ownable.sol";
+import "DAPP-NEXT-JS/node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract kradlFactoryNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
